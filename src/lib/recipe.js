@@ -10,9 +10,9 @@ function apply(ingredient) {
     return scalings[ingredient.scaling](ingredient)
 }
 
-var recipe = {
+var exampleRecipe = {
 
-    title: "test",
+    title: "Obstsalat",
     text: "do x and then do y",
     ingredients: [
         // what, amount in g, scaling acc, steps, einheit?
@@ -23,6 +23,13 @@ var recipe = {
 
 }
 
+class Recipe {
+    constructor(title, text, ingredients) {
+        this.title = title
+        this.text = text
+        this.ingredients = ingredients
+    }
+}
 
 function standard(ingredient) {
     return Math.round(ingredient.amount / ingredient.factor) * ingredient.factor
@@ -31,3 +38,5 @@ function standard(ingredient) {
 function egg(ingredient) {
     return Math.round(ingredient / ingredient.factor)
 }
+
+export {exampleRecipe, Recipe}
