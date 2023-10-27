@@ -1,7 +1,8 @@
 <script setup>
 import HelloWorld from './HelloWorld.vue'
-import TheWelcome from './TheWelcome.vue'
+import Step from './Step.vue'
 import {Recipe} from '@/lib/recipe'
+import IngredientList from "@/components/IngredientList.vue";
 
 defineProps({
   recipe: Recipe
@@ -14,11 +15,17 @@ defineProps({
     <div class="wrapper">
       <HelloWorld :title="recipe.title" />
     </div>
+    <div>
+      <IngredientList :ingredients="recipe.ingredients"/>
+    </div>
   </header>
 
 
-  <main>
-    <TheWelcome />
+  <main >
+    <div v-for="step in recipe.steps">
+      <Step :step="step"/>
+    </div>
+
   </main>
 </template>
 

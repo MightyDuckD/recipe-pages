@@ -1,6 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import TheWelcome from './components/IngredientList.vue'
 import Recipe from "@/components/Recipe.vue";
 import {exampleRecipe} from '@/lib/recipe'
 
