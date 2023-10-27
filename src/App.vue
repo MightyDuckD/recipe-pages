@@ -1,13 +1,22 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/IngredientList.vue'
-import Recipe from "@/components/Recipe.vue";
+import Recipe from "@/components/RecipeView.vue";
 import {exampleRecipe} from '@/lib/recipe'
+
+
+// if (recipe === null) {
+//
+// }
+//
+//
 
 </script>
 
 <template>
-  <Recipe :recipe="exampleRecipe"/>
+  <div>debug user data</div>
+<!--  <Recipe :recipe="exampleRecipe"/>-->
+  <router-view />
 </template>
 
 <style scoped>
