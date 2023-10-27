@@ -1,15 +1,17 @@
 <script setup>
+import ClickToEdit from "@/components/ClickToEdit.vue";
+
 defineProps({
   title: {
     type: String,
-    required: true
+    required: false
   }
 })
 </script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ title }}</h1>
+    <h1 class="green"><ClickToEdit :value="title"></ClickToEdit></h1>
   </div>
 </template>
 

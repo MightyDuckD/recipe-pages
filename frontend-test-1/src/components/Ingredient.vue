@@ -2,10 +2,20 @@
 
 
 import {RecipeIngredient} from "@/lib/recipe";
+import ClickToEdit from "@/components/ClickToEdit.vue";
+import {toRefs, watch} from "vue";
 
-defineProps({
+const props = defineProps({
   ingredient: RecipeIngredient
 })
+
+const { ing } = toRefs(props);
+watch(() => ing, (value, oldValue, onCleanup) => {
+
+  console.log("yooo " + JSON.stringify(value) + oldValue)
+  // console.log("testsssss " + JSON.stringify(ing.value))
+
+}, { immediate: true /*run on init as well*/});
 
 
 </script>
@@ -13,8 +23,8 @@ defineProps({
 <template>
   <div class="item">
     <div class="details">
-      <span style="width: 30%; color: #00bd7e">{{ingredient.amount}} g</span>
-      {{ingredient.what}}
+      <span style="width: 30%; color: #00bd7e"><ClickToEdit v-model:value="ingredient.amount"></ClickToEdit> g </span>
+      <ClickToEdit v-model:value="ingredient.what"/>
     </div>
   </div>
 </template>

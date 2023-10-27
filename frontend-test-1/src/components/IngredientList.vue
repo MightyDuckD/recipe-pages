@@ -19,8 +19,8 @@ defineProps({
 
 <template>
 
-  <Ingredient v-for="i in ingredients" :ingredient="i"> <!-- TODO: find better way for loop -->
-
+  <Ingredient v-for="i in ingredients" :ingredient="i" :key="i.what">
+    <!-- TODO: find better way for loop -->
   </Ingredient>
 
 </template>

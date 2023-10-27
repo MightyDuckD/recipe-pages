@@ -3,6 +3,7 @@ import HelloWorld from './HelloWorld.vue'
 import Step from './Step.vue'
 import {exampleRecipe, Recipe} from '@/lib/recipe'
 import IngredientList from "@/components/IngredientList.vue";
+import {watch} from "vue";
 
 
 defineProps({

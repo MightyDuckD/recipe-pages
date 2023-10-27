@@ -1,3 +1,5 @@
+
+
 var STANDARD = 0;
 var EGG = 1;
 var scalings = {}
@@ -11,7 +13,7 @@ function apply(ingredient) {
 
 
 class Recipe {
-    constructor(title, text, ingredients = [], steps = []) {
+    constructor(title, text, ingredients= [], steps = []) {
         this.title = title
         this.text = text
         this.ingredients = ingredients
@@ -42,15 +44,28 @@ function egg(ingredient) {
     return Math.round(ingredient / ingredient.factor)
 }
 
+function parseToRecipe(obj) {
+    var t =  Object.assign(new Recipe, obj)
+
+
+    t.ingredients = t.ingredients.map(i => Object.assign(new RecipeIngredient, i))
+    t.steps = t.steps.map(i => Object.assign(new RecipeStep, i))
+
+    return t
+}
+
 var exampleRecipe = {
 
     title: "Obstsalat",
     text: "do x and then do y",
     ingredients: [
-        // what, amount in g, scaling acc, steps, einheit?
-        {what: "Apfel", amount: 1000, scaling: STANDARD, factor: 80},
-        {what: "Banane", amount: 650, scaling: EGG, factor: 80},
-        {what: "Yoghurt", amount: 1000, scaling: STANDARD, factor: 100}
+        new RecipeIngredient("Apfel", 1000, 80),
+        new RecipeIngredient("Banane", 650, 80),
+        new RecipeIngredient("Yoghurt", 1000, 80)
+        // // what, amount in g, scaling acc, steps, einheit?
+        // {what: "Apfel", amount: 1000, scaling: STANDARD, factor: 80},
+        // {what: "Banane", amount: 650, scaling: EGG, factor: 80},
+        // {what: "Yoghurt", amount: 1000, scaling: STANDARD, factor: 100}
     ],
     steps: [
         new RecipeStep("cut salad", "cut @0 and @1 in bite size pieces"),
@@ -58,4 +73,4 @@ var exampleRecipe = {
     ]
 }
 
-export {exampleRecipe, Recipe, RecipeIngredient, RecipeStep}
+export {exampleRecipe, Recipe, RecipeIngredient, RecipeStep, parseToRecipe}
