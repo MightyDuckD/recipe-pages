@@ -13,7 +13,8 @@ defineProps({
 <template>
   <div class="item">
     <div class="details">
-      {{ingredient.what}} todo: render amount
+      <span style="width: 30%; color: #00bd7e">{{ingredient.amount}} g</span>
+      {{ingredient.what}}
     </div>
   </div>
 </template>

@@ -1,11 +1,16 @@
 <script setup>
 
 
-import {RecipeStep} from "@/lib/recipe";
+import {RecipeIngredient, RecipeStep} from "@/lib/recipe";
+import Ingredient from "@/components/Ingredient.vue";
 
 
 defineProps({
-  step: RecipeStep
+  step: RecipeStep,
+  ingredients: {
+    type: Array,
+
+  },
 })
 
 
@@ -14,28 +19,86 @@ defineProps({
 <template>
   <div class="item">
     <div class="details">
-      <h3 style="float: left">
+      <h3>
         {{step.desc}}
       </h3>
-      <div style="float: left">
-        <div class="steps" v-for="value in step.substeps">
-          <Step :step="value" v-if="typeof value !== 'number'"></Step>
-          <div class="steps" v-if="typeof value === 'number'">
-            use ing number {{value}}
-          </div>
-        </div>
+      <div>
+        {{step.text}}
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.steps {
-  border: #00bd7e 1px;
+.item {
+  margin-top: 2rem;
+  display: flex;
+  position: relative;
+}
 
-  background: #00bd7e;
-  margin: 10px 10px 10px 30px;
-  text-align: center;
-  align-content: center;
+.details {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+i {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  width: 32px;
+  height: 32px;
+
+  color: var(--color-text);
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: var(--color-heading);
+}
+
+@media (min-width: 1024px) {
+  .item {
+    margin-top: 0;
+    padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
+  }
+
+  i {
+    top: calc(50% - 25px);
+    left: -26px;
+    position: absolute;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .item:before {
+    content: ' ';
+    border-left: 1px solid var(--color-border);
+    position: absolute;
+    left: 0;
+    bottom: calc(50% + 25px);
+    height: calc(50% - 25px);
+  }
+
+  .item:after {
+    content: ' ';
+    border-left: 1px solid var(--color-border);
+    position: absolute;
+    left: 0;
+    top: calc(50% + 25px);
+    height: calc(50% - 25px);
+  }
+
+  .item:first-of-type:before {
+    display: none;
+  }
+
+  .item:last-of-type:after {
+    display: none;
+  }
 }
 </style>

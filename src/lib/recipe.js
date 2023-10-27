@@ -28,9 +28,9 @@ class RecipeIngredient {
 }
 
 class RecipeStep {
-    constructor(desc, substeps) {
+    constructor(desc, text) {
         this.desc = desc;
-        this.substeps = substeps;
+        this.text = text;
     }
 }
 
@@ -53,11 +53,8 @@ var exampleRecipe = {
         {what: "Yoghurt", amount: 1000, scaling: STANDARD, factor: 100}
     ],
     steps: [
-        new RecipeStep("mix",[
-                new RecipeStep( "cut",  [0, 1]),
-                2
-            ]
-        )
+        new RecipeStep("cut salad", "cut @0 and @1 in bite size pieces"),
+        new RecipeStep("prepare salad", "mix @s0 and @2 in a large bowl"),
     ]
 }
 
